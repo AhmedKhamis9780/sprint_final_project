@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws_cren', region: 'us-east-1') {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 699819973233.dkr.ecr.us-east-1.amazonaws.com/sprint'
-                    sh 'docker build -t 699819973233.dkr.ecr.us-east-1.amazonaws.com/sprint:1 .'
+                    sh 'docker build -t 699819973233.dkr.ecr.us-east-1.amazonaws.com/sprint:1 MySQL-and-Python/'
                     sh 'docker push 699819973233.dkr.ecr.us-east-1.amazonaws.com/sprint:1'
                 }
             }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws_cren', region: 'us-east-1') {
                     sh 'aws eks update-kubeconfig --region us-east-1 --name sprint'
-                    sh 'kubectl get nodes'
+                    sh 'kubectl apply -f k8s/.'
                 }
     }
     }
