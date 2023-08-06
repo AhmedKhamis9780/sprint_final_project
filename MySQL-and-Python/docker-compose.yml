@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  mysql-service:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: whatever
+      MYSQL_DATABASE: BucketList
+      MYSQL_USER: flask_app
+      MYSQL_PASSWORD: whatever
+    volumes:
+    - my_own_data:/var/lib/mysql
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"  
+
+  flask:
+    build: .
+    depends_on:
+      - mysql_db
+    ports:
+      - 5000:5000
+volumes:
+ my_own_data:     

@@ -1,0 +1,12 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: my-app-ingress
+# spec:
+#   rules:
+#   - host: flask.com
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: flask-app-service
+#           servicePort: 5000
