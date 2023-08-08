@@ -32,7 +32,7 @@ from ansible output follow link to jenkins web page then enter admin password
 
 install suggeted plugin then create user and log in
 
-![](image.png) 
+    ![]()
 
 add plugin "aws steps"
 
@@ -79,3 +79,4 @@ by DNS load balanscer in privous command
 kubectl get ingress
 ```
 ![](image-7.png)
+[^1]: 
