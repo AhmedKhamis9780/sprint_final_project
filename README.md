@@ -34,23 +34,23 @@ install suggeted plugin then create user and log in
 
 add plugin "aws steps"
 
-![](screenshot\plugins.PNG)
+![](screenshot/plugins.PNG)
 
 
-![](screenshot\create_user.PNG)
+![](screenshot/create_user.PNG)
 
 add aws credentials in username and password format with ID "aws_cren"
 
 add github credentials with username:"AhmedKhamis9780" and password: "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"
 
-![](screenshot\credentials.PNG)
+![](screenshot/credentials.PNG)
 
 create pipeline to pull code from this repository from "main" branch and path to jenkins file is "jenkins/Jenkinsfile"
 
 
 build pipeline
 
-![](screenshot\build.PNG)
+![](screenshot/build.PNG)
 
 
 ## 4. kubectl
@@ -68,7 +68,7 @@ kubectl get all
 kubectl get ingress
 ```
 
-![](screenshot\kube.PNG)
+![](screenshot/kube.PNG)
 
 
 ## 5. access application
