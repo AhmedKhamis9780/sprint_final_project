@@ -32,12 +32,11 @@ from ansible output follow link to jenkins web page then enter admin password
 
 install suggeted plugin then create user and log in
 
+![](screenshot/create_user.PNG)
+
 add plugin "aws steps"
 
 ![](screenshot/plugins.PNG)
-
-
-![](screenshot/create_user.PNG)
 
 add aws credentials in username and password format with ID "aws_cren"
 
