@@ -1,4 +1,5 @@
 cd terraform
+terraform init
 terraform apply -auto-approve 
 ip_add=$(cat jenkins-ip.txt)
 cp tf-key-pair.pem ../ansible/
