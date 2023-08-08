@@ -2,84 +2,84 @@
   hosts: jenkins
   become: true
   tasks:
-    # - name: pre install
-    #   apt:
-    #     name: [default-jdk,ca-certificates,gnupg,lsb-release,unzip,apt-transport-https]
-    #     update_cache: true
-    # - name: setup jenkins
-    #   block:
-    #   - name: Add jenkins GPG apt Key
-    #     ansible.builtin.get_url:
-    #       url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
-    #       dest: /usr/share/keyrings/jenkins-keyring.asc
-    #   - name: Add jenkins Repository
-    #     ansible.builtin.apt_repository:
-    #       repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/ "
-    #       state: present
-    # - name: install jenkins
-    #   apt:
-    #     name: jenkins
-    #     update_cache: true    
-    # - name: install java
-    #   apt:
-    #     name: openjdk-17-jre
-    #     update_cache: true
-    # - name: "Read a jenkins default password"
-    #   shell: |
-    #     cat /var/lib/jenkins/secrets/initialAdminPassword
-    #   register: file_content
+    - name: pre install
+      apt:
+        name: [default-jdk,ca-certificates,gnupg,lsb-release,unzip,apt-transport-https]
+        update_cache: true
+    - name: setup jenkins
+      block:
+      - name: Add jenkins GPG apt Key
+        ansible.builtin.get_url:
+          url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+          dest: /usr/share/keyrings/jenkins-keyring.asc
+      - name: Add jenkins Repository
+        ansible.builtin.apt_repository:
+          repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/ "
+          state: present
+    - name: install jenkins
+      apt:
+        name: jenkins
+        update_cache: true    
+    - name: install java
+      apt:
+        name: openjdk-17-jre
+        update_cache: true
+    - name: "Read a jenkins default password"
+      shell: |
+        cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: file_content
 
-    # - name: open jenkinsin port 80
-    #   ansible.builtin.lineinfile:
-    #     path: /etc/default/jenkins
-    #     search_string: 'HTTP_PORT='
-    #     line: HTTP_PORT=80
-    # - name: open jenkinsin port 80
-    #   ansible.builtin.lineinfile:
-    #     path: /usr/lib/systemd/system/jenkins.service
-    #     search_string: 'Environment="JENKINS_PORT='
-    #     line: Environment="JENKINS_PORT=80"
-    # - name: open jenkinsin port 80
-    #   ansible.builtin.lineinfile:
-    #     path: /usr/lib/systemd/system/jenkins.service
-    #     search_string: 'AmbientCapabilities=CAP_NET_BIND_SERVICE'
-    #     line: AmbientCapabilities=CAP_NET_BIND_SERVICE
+    - name: open jenkinsin port 80
+      ansible.builtin.lineinfile:
+        path: /etc/default/jenkins
+        search_string: 'HTTP_PORT='
+        line: HTTP_PORT=80
+    - name: open jenkinsin port 80
+      ansible.builtin.lineinfile:
+        path: /usr/lib/systemd/system/jenkins.service
+        search_string: 'Environment="JENKINS_PORT='
+        line: Environment="JENKINS_PORT=80"
+    - name: open jenkinsin port 80
+      ansible.builtin.lineinfile:
+        path: /usr/lib/systemd/system/jenkins.service
+        search_string: 'AmbientCapabilities=CAP_NET_BIND_SERVICE'
+        line: AmbientCapabilities=CAP_NET_BIND_SERVICE
                     
-    # - name: Add Docker GPG apt Key
-    #   apt_key:
-    #     url: https://download.docker.com/linux/ubuntu/gpg
-    #     state: present
-    # - name: Add Docker Repository
-    #   apt_repository:
-    #     repo: deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
-    #     state: present
-    # - name: install docker
-    #   apt:
-    #     name: [docker-ce,docker-ce-cli,containerd.io,docker-compose-plugin]
-    #     update_cache: true 
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+    - name: install docker
+      apt:
+        name: [docker-ce,docker-ce-cli,containerd.io,docker-compose-plugin]
+        update_cache: true 
 
-    # - name: Download awscli
-    #   ansible.builtin.get_url:
-    #     url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-    #     dest: /home/awscliv2.zip
-    # - name: Unarchive an awscli file 
-    #   ansible.builtin.unarchive:
-    #     src: /home/awscliv2.zip
-    #     dest: /home
-    #     remote_src: yes    
-    # - name: install aws-cli
-    #   ansible.builtin.shell: bash /home/aws/install
+    - name: Download awscli
+      ansible.builtin.get_url:
+        url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        dest: /home/awscliv2.zip
+    - name: Unarchive an awscli file 
+      ansible.builtin.unarchive:
+        src: /home/awscliv2.zip
+        dest: /home
+        remote_src: yes    
+    - name: install aws-cli
+      ansible.builtin.shell: bash /home/aws/install
 
-    # - name: Download helm
-    #   ansible.builtin.get_url:
-    #     url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-    #     dest: /home/get_helm.sh
-    #     mode: '700'
-    # - name: install Helm
-    #   ansible.builtin.shell: bash /home/get_helm.sh    
+    - name: Download helm
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        dest: /home/get_helm.sh
+        mode: '700'
+    - name: install Helm
+      ansible.builtin.shell: bash /home/get_helm.sh    
 
-    # - name: install kubectl 
-    #   script: final.sh    
+    - name: install kubectl 
+      script: final.sh    
     
 
     - name: "restart jenkins services"
