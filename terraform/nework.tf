@@ -35,14 +35,6 @@ module "pub_ec2" {
   sg = module.sec_group.sg_id
   KEY = "new"
 }
-# module "private_ec2" {
-#   source = "./private_ec2"
-#   AMIS = "ami-053b0d53c279acc90"
-#   INSTANCE_Type = "t2.micro"
-#   subnet = module.private_subnet.subnet_id1
-#   sg = module.sec_group.sg_id
-#   KEY = "new"
-# }
 module "public_id" {
   source = "./lb"
   name = "public"
@@ -53,17 +45,3 @@ module "public_id" {
   vpc = module.vpc.vpc_id
   instance = module.pub_ec2.public_ec2_id1
 }
-# module "private_id" {
-#   source = "./lb"
-#   name = "private"
-#   tg_name = "private"
-#   internal = true
-#   sg = module.sec_group.sg_id
-#   subnet = module.private_subnet.subnet_id1
-#   vpc = module.vpc.vpc_id
-#   instance = module.private_ec2.private_ec2_id1
-# }
-# module "eks" {
-#   source  = "terraform-aws-modules/eks/aws"
-#   version = "19.15.4"
-# }

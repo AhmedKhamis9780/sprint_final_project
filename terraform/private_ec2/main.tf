@@ -9,7 +9,9 @@ resource "aws_instance" "private" {
   associate_public_ip_address = false
   key_name = var.KEY
   # user_data = file("apache-config.sh")
-  
+    provisioner "local-exec" {
+    command = "echo ${self.public_ip} > jenkins-ip.txt"
+  }
   
   tags = {
     Name = "apache"

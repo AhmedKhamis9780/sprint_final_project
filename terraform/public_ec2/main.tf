@@ -40,6 +40,9 @@ resource "aws_instance" "public" {
     volume_type = "gp3"
   }
   
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} > jenkins-ip.txt"
+  }
   tags = {
     Name = var.name
   }
