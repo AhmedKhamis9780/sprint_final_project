@@ -78,4 +78,4 @@ by DNS load balanscer in privous command
 ```
 kubectl get ingress
 ```
-![](screenshot\app.PNG)
+![](screenshot/app.PNG)
