@@ -24,6 +24,18 @@ resource "aws_iam_instance_profile" "ec2-profile" {
   role = aws_iam_role.ec2.name
 }
 
+resource "aws_key_pair" "tf-key-pair" {
+key_name = "tf-key-pair"
+public_key = tls_private_key.rsa.public_key_openssh
+}
+resource "tls_private_key" "rsa" {
+algorithm = "RSA"
+rsa_bits  = 4096
+}
+resource "local_file" "tf-key" {
+content  = tls_private_key.rsa.private_key_pem
+filename = "tf-key-pair"
+}
 
 resource "aws_instance" "public" {
   count =length(var.subnet)
@@ -33,7 +45,7 @@ resource "aws_instance" "public" {
   vpc_security_group_ids = [var.sg]
   source_dest_check      = false
   associate_public_ip_address = true
-  key_name = var.KEY
+  key_name = "tf-key-pair"
   iam_instance_profile = aws_iam_instance_profile.ec2-profile.name
   root_block_device {
     volume_size = 30 

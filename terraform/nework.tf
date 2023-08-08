@@ -33,7 +33,6 @@ module "pub_ec2" {
   INSTANCE_Type = "t2.medium"
   subnet = [module.public_subnet.subnet_id1[0]]
   sg = module.sec_group.sg_id
-  KEY = "new"
 }
 module "public_id" {
   source = "./lb"
