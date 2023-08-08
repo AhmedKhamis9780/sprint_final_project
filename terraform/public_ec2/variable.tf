@@ -12,9 +12,7 @@ variable "INSTANCE_Type" {
 variable "sg" {
     type = string
 }
-variable "KEY" {
-    type = string
-}
+
 variable "name" {
     type = string
 }
