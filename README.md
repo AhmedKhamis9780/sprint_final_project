@@ -3,7 +3,7 @@
 you can skip terrafrom and ansible by using deploy.sh 
 
 ## 1. terraform 
-before running the command you need to change the  
+ 
 in terraform directory run the command
 
 ```
@@ -15,6 +15,7 @@ terraform apply
 ## 2. ansible
 
 from the terrafrom output take the jenkins ec2 public ip then replace the value "ansible_host" with it
+copy tf-key-pair.pem key file from terraform directory to ansible directory 
 then run the command
 
 ```
@@ -29,7 +30,7 @@ from ansible output follow link to jenkins web page then enter admin password
 install suggeted plugin then create user and log in
 ![](image.png) 
 add plugin "aws steps"
-![](image-1.png)
+![][]
 add aws credentials in username and password format with ID "aws_cren"
 add github credentials with username:"AhmedKhamis9780" and password: "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"
 ![](image-2.png)
