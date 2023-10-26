@@ -40,7 +40,7 @@ add plugin "aws steps"
 
 add aws credentials in username and password format with ID "aws_cren"
 
-add github credentials with username:"AhmedKhamis9780" and password: "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"
+add github credentials
 
 ![](screenshot/credentials.PNG)
 
