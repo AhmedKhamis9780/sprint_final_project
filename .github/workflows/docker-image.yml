@@ -27,8 +27,8 @@ jobs:
           file: ./MySQL-and-Python/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            user/app:1.0
+          tags: mandark.azurecr.io/${{ secrets.azure_repo_admin }}:1.0
+
       
       - name: Push image to GHCR
         run: |
