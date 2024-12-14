@@ -1,7 +1,7 @@
 name: backend ci
 env:
   AZURE_WEBAPP_NAME: mn                 # set this to the name of your Azure Web App
-  Container_instance_name: kill
+  Container_instance_name: kayam
   Container_instance_region: 'Canada Central'
   REPO_SERVER_NAME: mandark.azurecr.io
   image_name: backend
