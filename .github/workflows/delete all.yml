@@ -19,6 +19,7 @@ jobs:
 
     - name: Commit Changes
       run: |
+        ls
         git config user.name "AhmedKhamis9780"
         git config user.email "ahmed.khamis9780@gmail.com"
         git add .
