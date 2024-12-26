@@ -1,7 +1,8 @@
 name: Delete All Files Except .github
 
 on:
-  workflow_dispatch: # Manually trigger the workflow
+  push:
+  # workflow_dispatch: # Manually trigger the workflow
 
 jobs:
   delete_files:
