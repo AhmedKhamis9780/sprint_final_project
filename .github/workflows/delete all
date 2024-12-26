@@ -1,0 +1,27 @@
+name: Delete All Files Except .github
+
+on:
+  workflow_dispatch: # Manually trigger the workflow
+
+jobs:
+  delete_files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      
+    - name: Delete All Files Except .github
+      run: |
+        find . -mindepth 1 -not -name ".github" -not -name "." -exec rm -rf {} +
+        echo "All files except .github deleted"
+
+    - name: Commit Changes
+      run: |
+        git config user.name "AhmedKhamis9780"
+        git config user.email "ahmed.khamis9780@gmail.com"
+        git add .
+        git commit -m "Delete all files except .github"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
