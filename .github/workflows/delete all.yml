@@ -14,10 +14,10 @@ jobs:
       
     - name: Delete All Files Except .github
       run: |
-        ls
+        ls -al
         find . -mindepth 1 -not -name ".git" -not -name "." -exec rm -rf {} +
         echo "All files except .github deleted"
-        ls
+        ls -al
 
     - name: Commit Changes
       run: |
