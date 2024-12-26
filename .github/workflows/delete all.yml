@@ -15,15 +15,12 @@ jobs:
     - name: Delete All Files Except .github
       run: |
         ls -al
-        find . -mindepth 1 -not -name ".git" -not -name "." -exec rm -rf {} +
+        find . -mindepth 1 -not -name ".git*" -not -name "." -exec rm -rf {} +
         echo "All files except .github deleted"
         ls -al
 
     - name: Commit Changes
       run: |
-        ls
-        git config user.name "AhmedKhamis9780"
-        git config user.email "ahmed.khamis9780@gmail.com"
         git add .
         git commit -m "Delete all files except .github"
         git push
